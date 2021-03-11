@@ -1,5 +1,4 @@
 class Invoice:
-
     def __init__(self):
         self.items = {}
 
@@ -21,12 +20,26 @@ class Invoice:
         for k, v in products.items():
             total_discount += (int(v['qnt']) * float(v['unit_price'])) * float(v['discount']) / 100
         total_discount = round(total_discount, 2)
-        self.total_discount = total_discount
-        return  total_discount
+        return total_discount
+
+    def totalSaved(self, products):
+        total_discount = 0
+        total_saved = 0
+        for k, v in products.items():
+            total_discount += (int(v['qnt']) * float(v['unit_price'])) * float(v['discount']) / 100
+            total_discount = round(total_discount, 2)
+            total_saved += total_discount
+        return total_saved
 
     def totalPurePrice(self, products):
         total_pure_price = self.totalImpurePrice(products) - self.totalDiscount(products)
         return total_pure_price
+
+    def totalProducts(self, products):
+        total_items = 0
+        for x in products.items():
+            total_items = total_items + 1
+        return total_items
 
     def inputAnswer(self, input_value):
         while True:

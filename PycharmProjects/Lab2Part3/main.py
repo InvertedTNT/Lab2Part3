@@ -15,5 +15,9 @@ while True:
         break
 
 total_amount = Invoice().totalPurePrice(products)
+total_items = Invoice().totalProducts(products)
+total_discount = Invoice().totalSaved(products)
 
+print("The total amount of items purchased is", total_items)
+print("You saved: ", total_discount)
 print("Your total pure price is: ", total_amount)
